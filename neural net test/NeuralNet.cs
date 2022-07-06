@@ -49,24 +49,7 @@ namespace neural_net_test
 			public List<float> ForwardProp( List<float> data )
 			{
 				var results = new List<float>();
-				// for( int i = 0; i < weights.Count; ++i )
-				// {
-				// 	Debug.Assert( weights.Count == data.Count );
-				// 	Debug.Assert( biases.Count == data.Count );
-				// 
-				// 	float total = 0.0f;
-				// 	for( int j = 0; j < weights[i].Count; ++j  )
-				// 	{
-				// 		for( int k = 0; k < data.Count; ++k )
-				// 		{
-				// 			total += weights[i][j] * data[k];
-				// 		}
-				// 	}
-				// 	total += biases[i];
-				// 	results.Add( total / ( 1 + Math.Abs( total ) ) ); // fake sigmoid
-				// }
 
-				// var nOutputs = weights.Count / weights[0].Count;
 				var nOutputs = weights[0].Count;
 				for( int i = 0; i < nOutputs; ++i )
 				{
@@ -78,21 +61,6 @@ namespace neural_net_test
 					total += biases[i];
 					results.Add( total / ( 1 + Math.Abs( total ) ) ); // fake sigmoid
 				}
-
-				// // i did the arrays backwards so we gotta loop backwards :/
-				// for( int j = 0; j < weights[0].Count; ++j )
-				// {
-				// 	for( int i = 0; i < weights.Count; ++i )
-				// 	{
-				// 		float total = 0.0f;
-				// 		for( int k = 0; k < data.Count; ++k )
-				// 		{
-				// 			total += weights[i][j] * data[k];
-				// 		}
-				// 		total += biases[i];
-				// 		results.Add( total / ( 1 + Math.Abs( total ) ) ); // fake sigmoid
-				// 	}
-				// }
 
 				Debug.Assert( results.Count == nOutputs );
 
